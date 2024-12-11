@@ -1,0 +1,8 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "disabled",
+    "java.lint.unused": "ignore",
+    "java.format.comments.enabled": false,
+    "files.autoSave": "off"
+
+}
