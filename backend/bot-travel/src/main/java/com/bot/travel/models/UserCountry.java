@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @Document(collection = "user_country")
 public class UserCountry {
     @Id
-    private String id;
-    private String userId;
+    private String id; 
+    private String userId; 
     private String countryCode;
     private boolean visited;
     private String notes;
@@ -28,7 +28,11 @@ public class UserCountry {
     @NoArgsConstructor
     public static class Person {
         private String name;
-        private String contact;
-        private String socialMedia;
+        private String nationality;
+        private String contact; 
+        private String whatsapp; 
+        private String instagram; 
+        private String youtube; 
+        private String facebook; 
     }
 }

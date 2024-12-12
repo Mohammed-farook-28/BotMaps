@@ -9,6 +9,12 @@ import com.bot.travel.models.UserCountry;
 
 @Repository
 public interface UserCountryRepository extends MongoRepository<UserCountry, String> {
+
     List<UserCountry> findByUserId(String userId);
+
     UserCountry findByUserIdAndCountryCode(String userId, String countryCode);
+
+    List<UserCountry.Person> findByUserIdAndPeopleMetIsNotNull(String userId);
+
+    List<UserCountry> findByUserIdAndCountryCodeAndPeopleMetNotNull(String userId, String countryCode);
 }

@@ -45,4 +45,14 @@ public class UserCountryController {
     public UserCountry addPersonMet(@PathVariable String userId, @PathVariable String countryCode, @RequestBody UserCountry.Person person) {
         return userCountryService.addPersonMet(userId, countryCode, person);
     }
+
+    @GetMapping("/{userId}/people")
+    public List<UserCountry.Person> getAllPeopleMet(@PathVariable String userId) {
+        return userCountryService.getAllPeopleMet(userId);
+    }
+
+    @GetMapping("/{userId}/{countryCode}/people")
+    public List<UserCountry.Person> getPeopleMetInCountry(@PathVariable String userId, @PathVariable String countryCode) {
+        return userCountryService.getPeopleMetInCountry(userId, countryCode);
+    }
 }

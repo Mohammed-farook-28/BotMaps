@@ -1,5 +1,6 @@
 package com.bot.travel.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class UserCountryService {
             userCountry.setCountryCode(countryCode);
         }
         if (userCountry.getPhotoUrls() == null) {
-            userCountry.setPhotoUrls(new java.util.ArrayList<>());
+            userCountry.setPhotoUrls(new ArrayList<>());
         }
         userCountry.getPhotoUrls().add(photoUrl);
         return userCountryRepository.save(userCountry);
@@ -66,9 +67,27 @@ public class UserCountryService {
             userCountry.setCountryCode(countryCode);
         }
         if (userCountry.getPeopleMet() == null) {
-            userCountry.setPeopleMet(new java.util.ArrayList<>());
+            userCountry.setPeopleMet(new ArrayList<>());
         }
         userCountry.getPeopleMet().add(person);
         return userCountryRepository.save(userCountry);
+    }
+
+    public List<UserCountry.Person> getAllPeopleMet(String userId) {
+        List<UserCountry> userCountries = userCountryRepository.findByUserId(userId);
+        List<UserCountry.Person> allPeople = new ArrayList<>();
+        for (UserCountry userCountry : userCountries) {
+            if (userCountry.getPeopleMet() != null) {
+                allPeople.addAll(userCountry.getPeopleMet());
+            }
+        }
+        return allPeople;
+    }
+
+    public List<UserCountry.Person> getPeopleMetInCountry(String userId, String countryCode) {
+        UserCountry userCountry = userCountryRepository.findByUserIdAndCountryCode(userId, countryCode);
+        return userCountry != null && userCountry.getPeopleMet() != null
+                ? userCountry.getPeopleMet()
+                : new ArrayList<>();
     }
 }
