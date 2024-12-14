@@ -27,6 +27,7 @@ public class UserCountry {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class Person {
+        private String id; // Unique identifier for the person
         private String name;
         private String nationality;
         private String contact;

@@ -98,5 +98,4 @@ public class UserCountryService {
         }
         return filteredPeople;
     }
-    
 }
