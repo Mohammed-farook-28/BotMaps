@@ -84,10 +84,19 @@ public class UserCountryService {
         return allPeople;
     }
 
-    public List<UserCountry.Person> getPeopleMetInCountry(String userId, String countryCode) {
-        UserCountry userCountry = userCountryRepository.findByUserIdAndCountryCode(userId, countryCode);
-        return userCountry != null && userCountry.getPeopleMet() != null
-                ? userCountry.getPeopleMet()
-                : new ArrayList<>();
+    public List<UserCountry.Person> getPeopleByUserAndNationality(String userId, String nationality) {
+        List<UserCountry> userCountries = userCountryRepository.findByUserId(userId);
+        List<UserCountry.Person> filteredPeople = new ArrayList<>();
+        for (UserCountry userCountry : userCountries) {
+            if (userCountry.getPeopleMet() != null) {
+                for (UserCountry.Person person : userCountry.getPeopleMet()) {
+                    if (person.getNationality().equalsIgnoreCase(nationality)) {
+                        filteredPeople.add(person);
+                    }
+                }
+            }
+        }
+        return filteredPeople;
     }
+    
 }

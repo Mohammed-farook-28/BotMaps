@@ -14,7 +14,8 @@ public interface UserCountryRepository extends MongoRepository<UserCountry, Stri
 
     UserCountry findByUserIdAndCountryCode(String userId, String countryCode);
 
-    List<UserCountry.Person> findByUserIdAndPeopleMetIsNotNull(String userId);
+    List<UserCountry> findByUserIdAndPeopleMetIsNotNull(String userId);
 
-    List<UserCountry> findByUserIdAndCountryCodeAndPeopleMetNotNull(String userId, String countryCode);
+    List<UserCountry> findByUserIdAndPeopleMetNationality(String userId, String nationality);
+
 }

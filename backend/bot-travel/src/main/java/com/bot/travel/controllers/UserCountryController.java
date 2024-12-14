@@ -51,8 +51,10 @@ public class UserCountryController {
         return userCountryService.getAllPeopleMet(userId);
     }
 
-    @GetMapping("/{userId}/{countryCode}/people")
-    public List<UserCountry.Person> getPeopleMetInCountry(@PathVariable String userId, @PathVariable String countryCode) {
-        return userCountryService.getPeopleMetInCountry(userId, countryCode);
+    @GetMapping("/filter/nationality/{userId}/{nationality}")
+    public List<UserCountry.Person> getPeopleByUserAndNationality(
+            @PathVariable String userId,
+            @PathVariable String nationality) {
+        return userCountryService.getPeopleByUserAndNationality(userId, nationality);
     }
 }
